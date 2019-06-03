@@ -1,0 +1,10 @@
+Package: com.archergs.label
+Name: Label
+Depends: mobilesubstrate, ws.hbang.common (>= 1.11)
+Architecture: iphoneos-arm
+Description: Change your labels!
+Maintainer: archergs
+Author: archergs
+Section: Tweaks
+Version: 0.0.1-3+debug
+Installed-Size: 296

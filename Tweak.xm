@@ -57,16 +57,16 @@ void reloadColors() {
 %end
 
 %hook SBUICallToActionLabel
+
+
 -(void)layoutSubviews{
 	%orig;
-	// Get prefs
-	//NSDictionary *bundleDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.archergs.labelPrefs"];
 
 	// get the values from the prefs
 	id isEnabled = [preferences objectForKey:@"isEnabled"];
 	NSString *customText = [preferences objectForKey:@"customTextUnlock"];
 	NSUInteger characterCount = [customText length];
-	NSString *customColor = [preferences objectForKey:@"unlockColor"];
+	//NSString *customColor = [preferences objectForKey:@"unlockColor"];
 
 	// if the enabled switch is on, set the custom text!
 	if ([isEnabled isEqual:@1] && characterCount > 0){
@@ -76,19 +76,16 @@ void reloadColors() {
 			customText = @"";
 		}
 		[self label].string = customText;
-		[self label].legibilitySettings.primaryColor = LCPParseColorString(customColor, @"#FFFFFF");
+		/*[self label].legibilitySettings.primaryColor = LCPParseColorString(customColor, @"#FFFFFF");
 
 		[[self label] _updateLabelForLegibilitySettings];
-		[[self label] _updateLegibilityView];
+		[[self label] _updateLegibilityView];*/
 	}
 }
 %end
 
 %hook SBTelephonyManager
 -(void)_reallySetOperatorName:(id)arg1 inSubscriptionContext:(id)arg2{
-	
-	// Get prefs
-	//NSDictionary *bundleDefaults = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.archergs.labelPrefs"];
 	
 	// get the values from the prefs
 	id isEnabled = [preferences objectForKey:@"isEnabled"];
