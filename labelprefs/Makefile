@@ -1,0 +1,20 @@
+ARCHS = arm64 arm64e
+TARGET = iphone:clang:11.2:11.2
+
+include $(THEOS)/makefiles/common.mk
+
+BUNDLE_NAME = labelPrefs
+
+labelPrefs_FILES = NGPRootListController.m
+labelPrefs_INSTALL_PATH = /Library/PreferenceBundles
+labelPrefs_FRAMEWORKS = UIKit
+labelPrefs_PRIVATE_FRAMEWORKS = Preferences
+labelPrefs_LIBRARIES = colorpicker
+labelPrefs_CFLAGS = -fobjc-arc
+labelPrefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
+
+include $(THEOS_MAKE_PATH)/bundle.mk
+
+internal-stage::
+	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences$(ECHO_END)
+	$(ECHO_NOTHING)cp entry.plist $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/labelPrefs.plist$(ECHO_END)
