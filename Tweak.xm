@@ -82,7 +82,7 @@ void reloadColors() {
 		[[self label] _updateLegibilityView];*/
 	}
 }
-
+/*
 -(void)setLabel:(SBUILegibilityLabel *)textLabel{
 
 	// get the values from the prefs
@@ -102,7 +102,7 @@ void reloadColors() {
 		/*[self label].legibilitySettings.primaryColor = LCPParseColorString(customColor, @"#FFFFFF");
 
 		[[self label] _updateLabelForLegibilitySettings];
-		[[self label] _updateLegibilityView];*/
+		[[self label] _updateLegibilityView];
 	}
 
 	textLabel.string = customText;
@@ -128,11 +128,11 @@ void reloadColors() {
 		/*[self label].legibilitySettings.primaryColor = LCPParseColorString(customColor, @"#FFFFFF");
 
 		[[self label] _updateLabelForLegibilitySettings];
-		[[self label] _updateLegibilityView];*/
+		[[self label] _updateLegibilityView];
 	}
 	string = customText;
 	%orig(string);
-}
+}*/
 %end
 
 %hook SBTelephonyManager
