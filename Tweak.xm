@@ -18,12 +18,12 @@ void reloadColors() {
 %end */
 
 %hook NCNotificationListSectionRevealHintView
-
+/*
 -(void)setLegibilitySettings:(_UILegibilitySettings *)settings{
 	NSString *customColor = [preferences objectForKey:@"nongColor"];
 	[settings setPrimaryColor:LCPParseColorString(customColor, @"#FFFFFF")];
 	%orig(settings);
-}
+}*/
 
 -(void)layoutSubviews {
     %orig;
@@ -67,7 +67,7 @@ void reloadColors() {
 	NSString *customText = [preferences objectForKey:@"customTextUnlock"];
 	NSUInteger characterCount = [customText length];
 	//NSString *customColor = [preferences objectForKey:@"unlockColor"];
-
+	NSLog(@"press home text:%@", customText);
 	// if the enabled switch is on, set the custom text!
 	if ([isEnabled isEqual:@1] && characterCount > 0){
 		NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
@@ -81,6 +81,57 @@ void reloadColors() {
 		[[self label] _updateLabelForLegibilitySettings];
 		[[self label] _updateLegibilityView];*/
 	}
+}
+
+-(void)setLabel:(SBUILegibilityLabel *)textLabel{
+
+	// get the values from the prefs
+	id isEnabled = [preferences objectForKey:@"isEnabled"];
+	NSString *customText = [preferences objectForKey:@"customTextUnlock"];
+	NSUInteger characterCount = [customText length];
+	//NSString *customColor = [preferences objectForKey:@"unlockColor"];
+	NSLog(@"press home text legLabel:%@", customText);
+	// if the enabled switch is on, set the custom text!
+	if ([isEnabled isEqual:@1] && characterCount > 0){
+		NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+		if ([[customText stringByTrimmingCharactersInSet: set] length] == 0)
+		{
+			customText = @"";
+		}
+		//[self label].string = customText;
+		/*[self label].legibilitySettings.primaryColor = LCPParseColorString(customColor, @"#FFFFFF");
+
+		[[self label] _updateLabelForLegibilitySettings];
+		[[self label] _updateLegibilityView];*/
+	}
+
+	textLabel.string = customText;
+	//textLabel.textColor = [UIColor redColor];
+	%orig(textLabel);
+}
+
+-(void)setText:(NSString *)string{
+	// get the values from the prefs
+	id isEnabled = [preferences objectForKey:@"isEnabled"];
+	NSString *customText = [preferences objectForKey:@"customTextUnlock"];
+	NSUInteger characterCount = [customText length];
+	//NSString *customColor = [preferences objectForKey:@"unlockColor"];
+	NSLog(@"press home text String:%@", customText);
+	// if the enabled switch is on, set the custom text!
+	if ([isEnabled isEqual:@1] && characterCount > 0){
+		NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+		if ([[customText stringByTrimmingCharactersInSet: set] length] == 0)
+		{
+			customText = @"";
+		}
+		//[self label].string = customText;
+		/*[self label].legibilitySettings.primaryColor = LCPParseColorString(customColor, @"#FFFFFF");
+
+		[[self label] _updateLabelForLegibilitySettings];
+		[[self label] _updateLegibilityView];*/
+	}
+	string = customText;
+	%orig(string);
 }
 %end
 

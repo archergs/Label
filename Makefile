@@ -8,7 +8,6 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = Label
 
 Label_FILES = Tweak.xm
-Label_LIBRARIES = colorpicker
 Label_CFLAGS = -fobjc-arc
 Label_EXTRA_FRAMEWORKS = Cephei 
 

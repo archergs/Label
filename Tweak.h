@@ -18,6 +18,7 @@ NSString *unlockColor;
 @interface SBUILegibilityLabel : UIView
 @property (nonatomic,retain) _UILegibilitySettings * legibilitySettings;
 @property (nonatomic,copy) NSString * string;
+@property (nonatomic,copy) UIColor * textColor;
 -(void)_updateLabelForLegibilitySettings;
 -(void)_updateLegibilityView;
 -(void)setPrimaryColor:(UIColor *)color;
@@ -48,4 +49,6 @@ NSString *unlockColor;
 @interface SBUICallToActionLabel 
 -(NSString *)text;
 -(SBUILegibilityLabel *)label;
+-(void)setLabel:(SBUILegibilityLabel *)textLabel;
+-(void)setText:(NSString *)arg1 ;
 @end

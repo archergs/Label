@@ -9,7 +9,6 @@ labelPrefs_FILES = NGPRootListController.m
 labelPrefs_INSTALL_PATH = /Library/PreferenceBundles
 labelPrefs_FRAMEWORKS = UIKit
 labelPrefs_PRIVATE_FRAMEWORKS = Preferences
-labelPrefs_LIBRARIES = colorpicker
 labelPrefs_CFLAGS = -fobjc-arc
 labelPrefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
 
